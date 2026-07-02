@@ -2,7 +2,6 @@ package zoo;
 
 import zoo.animal.*;
 import zoo.enclosure.Enclosure;
-
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -15,9 +14,6 @@ public class Zoo {
 
     private final List<Enclosure<? extends Animal>> enclosures = new ArrayList<>();
 
-    // ---------------------------------------------------------
-    // addEnclosure
-    // ---------------------------------------------------------
     public void addEnclosure(Enclosure<? extends Animal> enclosure) {
         LOGGER.log(Level.INFO, "addEnclosure(name={0})", enclosure.name());
 
@@ -31,18 +27,12 @@ public class Zoo {
         LOGGER.log(Level.FINE, "Zoo now has {0} enclosures.", enclosures.size());
     }
 
-    // ---------------------------------------------------------
-    // getEnclosures
-    // ---------------------------------------------------------
     public List<Enclosure<? extends Animal>> getEnclosures() {
         LOGGER.log(Level.INFO, "getEnclosures() called");
         LOGGER.log(Level.FINE, "Returning {0} enclosures.", enclosures.size());
         return List.copyOf(enclosures);
     }
 
-    // ---------------------------------------------------------
-    // findEnclosureByName
-    // ---------------------------------------------------------
     public Enclosure<? extends Animal> findEnclosureByName(String name) {
         LOGGER.log(Level.INFO, "findEnclosureByName(name={0})", name);
 
@@ -60,10 +50,7 @@ public class Zoo {
         return result;
     }
 
-    // ---------------------------------------------------------
-    // getAllAnimals
-    // ---------------------------------------------------------
-    public List<Animal> getAllAnimals() {
+ List<Animal> getAllAnimals() {
         LOGGER.log(Level.INFO, "getAllAnimals() called");
 
         var animals = enclosures.stream()
@@ -75,9 +62,6 @@ public class Zoo {
         return animals;
     }
 
-    // ---------------------------------------------------------
-    // getAllMammals
-    // ---------------------------------------------------------
     public List<Mammal> getAllMammals() {
         LOGGER.log(Level.INFO, "getAllMammals() called");
 
@@ -91,9 +75,6 @@ public class Zoo {
         return mammals;
     }
 
-    // ---------------------------------------------------------
-    // getAnimalsByPredicate
-    // ---------------------------------------------------------
     public List<Animal> getAnimalsByPredicate(Predicate<Animal> predicate) {
         LOGGER.log(Level.INFO, "getAnimalsByPredicate(predicate) called");
 
@@ -107,9 +88,6 @@ public class Zoo {
         return animals;
     }
 
-    // ---------------------------------------------------------
-    // countAnimalsByType
-    // ---------------------------------------------------------
     public Map<Class<?>, Long> countAnimalsByType() {
         LOGGER.log(Level.INFO, "countAnimalsByType() called");
 
@@ -122,9 +100,6 @@ public class Zoo {
         return map;
     }
 
-    // ---------------------------------------------------------
-    // getOvercrowdedEnclosures
-    // ---------------------------------------------------------
     public List<Enclosure<? extends Animal>> getOvercrowdedEnclosures(int limit) {
         LOGGER.log(Level.INFO, "getOvercrowdedEnclosures(limit={0})", limit);
 
@@ -136,9 +111,6 @@ public class Zoo {
         return list;
     }
 
-    // ---------------------------------------------------------
-    // summary
-    // ---------------------------------------------------------
     public String summary() {
         LOGGER.log(Level.INFO, "summary() called");
 
