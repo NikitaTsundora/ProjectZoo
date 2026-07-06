@@ -3,6 +3,7 @@ package zoo.enclosure;
 import zoo.animal.Animal;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class Enclosure<T extends Animal> {
@@ -27,5 +28,11 @@ public class Enclosure<T extends Animal> {
 
     public ArrayList<T> getInhabitants() {
         return new ArrayList<T>(inhabitants);
+    }
+
+    public Optional<T> findAnimalByName(String animalName){
+        return inhabitants.stream()
+                .filter(a -> a.name().equals(animalName))
+                .findFirst();
     }
 }

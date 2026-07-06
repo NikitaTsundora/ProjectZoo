@@ -99,6 +99,13 @@ public class Zoo {
         LOGGER.log(Level.FINE, "countAnimalsByType: {0} types found.", map.size());
         return map;
     }
+    public Optional<? extends Animal> findAnimalByName(String animalName) {
+        return enclosures.stream()
+                .map(e -> e.findAnimalByName(animalName))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .findFirst();
+    }
 
     public List<Enclosure<? extends Animal>> getOvercrowdedEnclosures(int limit) {
         LOGGER.log(Level.INFO, "getOvercrowdedEnclosures(limit={0})", limit);
